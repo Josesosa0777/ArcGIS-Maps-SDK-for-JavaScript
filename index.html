@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a point, line, and polygon</title>
 
     <style>
       html,
@@ -17,18 +17,50 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.25/"></script>
     <script>
-        require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+        require([
+            "esri/config", 
+            "esri/Map", 
+            "esri/views/MapView",
+
+            "esri/Graphic", // Add the Graphic and GraphicsLayer modules.
+            "esri/layers/GraphicsLayer" // Add the Graphic and GraphicsLayer modules.
+            ], function(
+                esriConfig, Map, MapView, 
+                Graphic, GraphicsLayer // Add the Graphic and GraphicsLayer modules.
+                ) {
             esriConfig.apiKey = "<YOUR_API_KEY>";
             const map = new Map({
-                basemap: "arcgis-imagery" // Basemap layer service 
-                // "streets-vector" "topo-vector", "arcgis-navigation", "arcgis-streets-night", "arcgis-imagery", "osm-streets-relief"
+                basemap: "arcgis-topographic" // Basemap layer service 
+                // "arcgis-topographic", "streets-vector" "topo-vector", "arcgis-navigation", "arcgis-streets-night", "arcgis-imagery", "osm-streets-relief"
             });
             const view = new MapView({
                 map: map,
                 center: [-89.6252156, 20.9675213], // Longitude, latitude
-                zoom: 16, // Zoom level
+                zoom: 12, // Zoom level
                 container: "viewDiv" // Div element
             });
+            // Add a graphics layer:
+            const graphicsLayer = new GraphicsLayer(); 
+            map.add(graphicsLayer); 
+            // Add a point graphic:
+            const point = { //Create a point
+                type: "point",
+                longitude: -89.5845321,
+                latitude: 20.9204181
+            };
+            const simpleMarkerSymbol = {
+                type: "simple-marker",
+                color: [226, 119, 40],  // Orange
+                outline: {
+                    color: [255, 255, 255], // White
+                    width: 1
+                }
+            };
+            const pointGraphic = new Graphic({
+                geometry: point,
+                symbol: simpleMarkerSymbol
+            });
+            graphicsLayer.add(pointGraphic);
         });
     </script>
   </head>
