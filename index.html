@@ -58,7 +58,7 @@
 
             const simpleMarkerSymbol = {
                 type: "simple-marker",
-                color: [226, 119, 40],  // Orange
+                color: [196, 49, 256, 0.8],  // Purple, 80% opacity
                 outline: {
                     color: [255, 255, 255], // White
                     width: 1
@@ -88,7 +88,7 @@
             };
             const simpleLineSymbol = {
                 type: "simple-line",
-                color: [226, 119, 40], // Orange
+                color: [226, 119, 40, 0.6], // Orange, 60% opacity
                 width: 2
             };
             const polylineGraphic = new Graphic({
@@ -96,6 +96,35 @@
                 symbol: simpleLineSymbol
             });
             graphicsLayer.add(polylineGraphic);
+
+            // Add a polygon graphic:
+            // Create a polygon geometry
+            const polygon = {
+                type: "polygon",
+                rings: [
+                    [-89.59045321, 20.9145], //Longitude, latitude
+                    [-89.59045321, 20.925213], //Longitude, latitude
+                    [-89.58505321, 20.928213], //Longitude, latitude
+                    [-89.58005321, 20.925213], //Longitude, latitude
+                    [-89.58005321, 20.9145], //Longitude, latitude
+                ]
+            };
+
+            const simpleFillSymbol = {
+                type: "simple-fill",
+                color: [47, 219, 29, 0.4],  // Green, opacity 80%
+                outline: {
+                    color: [255, 255, 255],
+                    width: 1
+                }
+            };
+
+            const polygonGraphic = new Graphic({
+                geometry: polygon,
+                symbol: simpleFillSymbol,
+
+            });
+            graphicsLayer.add(polygonGraphic);
         });
     </script>
   </head>
