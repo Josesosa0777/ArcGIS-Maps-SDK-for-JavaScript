@@ -48,6 +48,12 @@
                 longitude: -89.5845321,
                 latitude: 20.9204181
             };
+            const point2 = { //Create a point
+                type: "point",
+                longitude: -89.6252156,
+                latitude: 20.9675213
+            };
+            let points = [point, point2]
             const simpleMarkerSymbol = {
                 type: "simple-marker",
                 color: [226, 119, 40],  // Orange
@@ -56,11 +62,18 @@
                     width: 1
                 }
             };
-            const pointGraphic = new Graphic({
-                geometry: point,
-                symbol: simpleMarkerSymbol
-            });
-            graphicsLayer.add(pointGraphic);
+            for (let i = 0; i < points.length; i++) {
+                const pointGraphic = new Graphic({
+                    geometry: points[i],
+                    symbol: simpleMarkerSymbol
+                });
+                graphicsLayer.add(pointGraphic);
+            }
+            // const pointGraphic = new Graphic({
+            //     geometry: point,
+            //     symbol: simpleMarkerSymbol
+            // });
+            // graphicsLayer.add(pointGraphic);
         });
     </script>
   </head>
