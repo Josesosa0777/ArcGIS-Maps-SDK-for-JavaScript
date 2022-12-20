@@ -48,12 +48,14 @@
                 longitude: -89.5845321,
                 latitude: 20.9204181
             };
-            const point2 = { //Create a point
+
+            const point2 = { //Create a second point
                 type: "point",
                 longitude: -89.6252156,
                 latitude: 20.9675213
             };
             let points = [point, point2]
+
             const simpleMarkerSymbol = {
                 type: "simple-marker",
                 color: [226, 119, 40],  // Orange
@@ -74,6 +76,26 @@
             //     symbol: simpleMarkerSymbol
             // });
             // graphicsLayer.add(pointGraphic);
+
+            // Create a line geometry
+            const polyline = {
+                type: "polyline",
+                paths: [
+                    [-89.57450, 20.92040], //Longitude, latitude
+                    [-89.58450, 20.92042], //Longitude, latitude
+                    [-89.58554, 20.92044]  //Longitude, latitude
+                ]
+            };
+            const simpleLineSymbol = {
+                type: "simple-line",
+                color: [226, 119, 40], // Orange
+                width: 2
+            };
+            const polylineGraphic = new Graphic({
+                geometry: polyline,
+                symbol: simpleLineSymbol
+            });
+            graphicsLayer.add(polylineGraphic);
         });
     </script>
   </head>
