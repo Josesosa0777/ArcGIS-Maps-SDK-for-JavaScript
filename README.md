@@ -5,4 +5,4 @@
 
 You need to create a developer account in https://developers.arcgis.com/ and then get the API KEY to use it the index.html
 
-![My Image](../../Desktop/example.png)
+![My Image](example.png)
